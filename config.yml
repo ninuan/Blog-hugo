@@ -1,0 +1,71 @@
+baseURL: "https://example.com/"   # 改成你的域名，Cloudflare Pages 会给你一个 *.pages.dev 的免费域名
+title: "Ninuan's Blog"                 # 改成你的博客名
+paginate: 5
+theme: "PaperMod"
+
+languageCode: "zh-cn"
+DefaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+enableRobotsTXT: true
+enableEmoji: true
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON   # 搜索功能需要 JSON 索引
+
+params:
+  env: production
+  description: "我的个人博客"
+  author: "me"
+
+  # 列表页 / 文章页开关
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowBreadCrumbs: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  showtoc: true
+  tocopen: false
+  comments: true
+
+  # 搜索（PaperMod 内置，基于 fuse.js）
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+  # 代码高亮
+  # 参考 https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs
+
+menu:
+  main:
+    - identifier: categories
+      name: 分类
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 20
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 30
+    - identifier: search
+      name: 搜索
+      url: /search/
+      weight: 40
