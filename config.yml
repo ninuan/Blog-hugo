@@ -1,4 +1,4 @@
-baseURL: "blog-hugo-aa7.pages.dev"   # 改成你的域名，Cloudflare Pages 会给你一个 *.pages.dev 的免费域名
+baseURL: "https://blog.xxhx.de"   # 改成你的域名，Cloudflare Pages 会给你一个 *.pages.dev 的免费域名
 title: "Ninuan's Blog"                 # 改成你的博客名
 paginate: 5
 theme: "PaperMod"
