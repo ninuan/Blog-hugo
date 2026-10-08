@@ -29,13 +29,16 @@ params:
   author: "Ninuan"
   mainSections: ["posts"]
 
-  # 首页保留文章列表，在顶部显示简短的个人介绍。
+  # 首页：个人介绍与最近文章。
   homeInfoParams:
-    Title: "你好，我是 Ninuan"
+    Title: "Ninuan"
     Content: |
       把学到的东西写下来，把生活里的片刻留下来。
-
-      [关于我](/about/) · [文章归档](/archives/)
+  homeRecentLimit: 10
+  # 可填写 /images/avatar.jpg（文件放在 static/images/）或公开图片 URL。
+  avatar: ""
+  footer:
+    text: "[分类](/categories/) · [归档](/archives/) · [订阅](/index.xml)"
 
   socialIcons:
     - name: email
@@ -74,26 +77,26 @@ params:
 
 menu:
   main:
-    - identifier: categories
-      name: 分类
-      url: /categories/
+    - identifier: posts
+      name: 文章
+      url: /posts/
       weight: 10
+    - identifier: friends
+      name: 朋友
+      url: /friends/
+      weight: 30
     - identifier: tags
       name: 标签
       url: /tags/
       weight: 20
-    - identifier: archives
-      name: 归档
-      url: /archives/
-      weight: 30
     - identifier: search
       name: 搜索
       url: /search/
-      weight: 40
+      weight: 50
     - identifier: about
       name: 关于
       url: /about/
-      weight: 50
+      weight: 40
 
 # 代码由 Hugo 的 Chroma 在构建时高亮，使用 PaperMod 自带的配色。
 markup:

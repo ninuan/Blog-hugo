@@ -84,7 +84,8 @@ bash publish.sh "发布文章：我的新博客"
 使用暖色背景、系统衬线字体、720px 正文宽度和 1.8 倍行距，同时支持深色模式。
 字体使用系统中的宋体类字体，具体字形会随设备变化，无需下载远程字体。
 
-- `assets/css/extended/reading.css`：正文、标题、首页列表、目录和手机样式。
+- `assets/css/extended/reading.css`：正文、标题、目录和手机样式。
+- `assets/css/extended/site-layout.css`：首页、按年文章列表、标签与分类索引。
 - `layouts/_partials/toc.html`：宽屏右侧目录；不足 1280px 时改为正文前的折叠目录。
 - `i18n/zh-cn.yaml`：中文阅读时间、字数、复制按钮等文案。
 
@@ -93,13 +94,28 @@ bash publish.sh "发布文章：我的新博客"
 不需要目录时设置 `ShowToc: false`。
 阅读样式的测试内容位于 `content/posts/math-code-test/index.md`，保持为草稿。
 
+首页布局参考 [Dejavu 的首页](https://blog.dejavu.moe/)，上方显示圆形头像、昵称、简介和社交链接，
+下方显示最近 10 篇文章，点击「全部文章」进入按年份排列的文章页。
+文章页、标签详情页、分类详情页和归档使用日期与标题列表，不再显示文章摘要卡片。
+标签与分类索引按英文首字母、数字、中文及其他字符分组，显示文章数量和点线；
+宽屏最多三栏，平板两栏，手机一栏。
+
+相关模板：`layouts/home.html`、`layouts/list.html`、`layouts/taxonomy.html`、
+`layouts/archives.html`，以及 `layouts/_partials/dated-posts.html` 和 `year-posts.html`。
+模板在站点根目录覆盖主题，无需修改 PaperMod 源码。
+
+顶部导航依次为「文章、标签、朋友、关于、搜索」。
+「朋友」页面在 `content/friends/index.md` 中维护；分类和归档入口放在页脚。
+
 ## 个人信息
 
-首页使用 PaperMod 的 `homeInfoParams` 显示简短介绍，下方继续显示文章列表。
+首页使用 `homeInfoParams` 显示昵称与简短介绍，下方显示最近文章。
 个人信息的编辑位置：
 
 - `config.yml` 中的 `params.author`：文章署名和网页作者信息。
 - `params.description`：站点简介；`params.homeInfoParams`：首页标题和介绍，支持 Markdown。
+- `params.avatar`：头像地址；为空时显示字母 N。可将图片放在 `static/images/avatar.jpg`，然后填写 `/images/avatar.jpg`。
+- `params.homeRecentLimit`：首页显示的文章数，默认 10；全部文章页不限制数量。
 - `params.socialIcons`：首页邮箱、GitHub、RSS 等链接；只添加希望公开的信息。邮箱使用 `mailto:` 链接。
 - `content/about/index.md`：「关于」页面的完整介绍。
 

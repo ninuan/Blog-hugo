@@ -1,0 +1,10 @@
+{{- range .ByDate.Reverse.GroupByDate "2006" -}}
+<section class="year-group" aria-labelledby="year-{{ .Key }}">
+  <h2 class="year-heading" id="year-{{ .Key }}">
+    <a href="#year-{{ .Key }}">{{ .Key }}</a><sup>{{ len .Pages }}</sup>
+  </h2>
+  {{- partial "dated-posts.html" .Pages -}}
+</section>
+{{- else -}}
+<p class="list-empty">还没有文章。</p>
+{{- end -}}

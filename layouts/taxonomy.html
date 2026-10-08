@@ -1,0 +1,36 @@
+{{- define "main" -}}
+<div class="index-layout">
+  <header class="page-header"><h1>{{ if eq .Type "tags" }}标签{{ else if eq .Type "categories" }}分类{{ else }}{{ .Title }}{{ end }}</h1></header>
+  {{- $groups := newScratch -}}
+  {{- range .Data.Terms.Alphabetical -}}
+    {{- $term := .Page -}}
+    {{- $name := $term.LinkTitle -}}
+    {{- $key := "4-其他" -}}
+    {{- if findRE `^[A-Za-z]` $name -}}
+      {{- $key = printf "1-%s" (upper (substr $name 0 1)) -}}
+    {{- else if findRE `^[0-9]` $name -}}
+      {{- $key = "2-0–9" -}}
+    {{- else if findRE `^\p{Han}` $name -}}
+      {{- $key = "3-中文" -}}
+    {{- end -}}
+    {{- $group := $groups.Get $key | default slice -}}
+    {{- $groups.Set $key ($group | append (dict "Page" $term "Count" .Count)) -}}
+    {{- $groups.SetInMap "keys" $key true -}}
+  {{- end -}}
+  <div class="terms-index">
+    {{- range $key, $_ := $groups.Get "keys" -}}
+    {{- $label := replaceRE `^[0-9]-` "" $key -}}
+    <section class="term-group" aria-labelledby="terms-{{ $label | urlize }}">
+      <h2 id="terms-{{ $label | urlize }}">{{ $label }}</h2>
+      <ul class="term-list">
+        {{- range $groups.Get $key }}
+        <li><a href="{{ .Page.RelPermalink }}"><span class="term-name">{{ .Page.LinkTitle }}</span><span class="term-leader" aria-hidden="true"></span><span class="term-count">{{ .Count }}</span></a></li>
+        {{- end }}
+      </ul>
+    </section>
+    {{- else -}}
+    <p class="list-empty">{{ if eq .Type "tags" }}还没有标签。{{ else }}还没有分类。{{ end }}</p>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}

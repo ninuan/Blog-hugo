@@ -1,0 +1,14 @@
+{{- if . -}}
+<ul class="dated-posts">
+  {{- range . }}
+  <li>
+    <a href="{{ .RelPermalink }}">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <span class="dated-post-title">{{ .Title }}{{ if .Draft }} <small class="draft-label">草稿</small>{{ end }}</span>
+    </a>
+  </li>
+  {{- end }}
+</ul>
+{{- else }}
+<p class="list-empty">还没有文章。</p>
+{{- end -}}

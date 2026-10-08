@@ -1,0 +1,27 @@
+{{- define "main" -}}
+<div class="home-layout">
+  <section class="home-intro" aria-label="关于作者">
+    {{- with site.Params.avatar }}
+    <img class="home-avatar" src="{{ . | relURL }}" alt="{{ site.Params.author }}" width="64" height="64">
+    {{- else }}
+    <span class="home-avatar home-monogram" aria-hidden="true">N</span>
+    {{- end }}
+    <div class="home-intro-text">
+      <h1 class="home-name">{{ site.Params.homeInfoParams.Title | default site.Params.author }}</h1>
+      <div class="home-motto">{{ site.Params.homeInfoParams.Content | markdownify }}</div>
+      {{- partial "social_icons.html" (dict "align" "left") -}}
+    </div>
+  </section>
+  <section class="home-recent" aria-labelledby="home-recent-title">
+    <header class="home-recent-header">
+      <h2 id="home-recent-title">最近文章</h2>
+      <a href="{{ "posts/" | relLangURL }}">全部文章 <span aria-hidden="true">→</span></a>
+    </header>
+    {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+    {{- $pages = where $pages "Params.hiddenInHomeList" "!=" true -}}
+    {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" -}}
+    {{- $limit := int (site.Params.homeRecentLimit | default 10) -}}
+    {{- partial "dated-posts.html" (first $limit $pages.ByDate.Reverse) -}}
+  </section>
+</div>
+{{- end -}}
