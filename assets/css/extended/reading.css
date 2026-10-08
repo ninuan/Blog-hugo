@@ -1,0 +1,486 @@
+/* Paper-like colors and a reading column aligned with the site navigation. */
+:root {
+    --main-width: 720px;
+    --nav-width: 720px;
+    --gap: 28px;
+    --content-gap: 22px;
+    --header-height: 88px;
+    --radius: 5px;
+    --theme: #f7f4ee;
+    --entry: #f7f4ee;
+    --primary: #1e1c19;
+    --secondary: #6b655b;
+    --content: #35312b;
+    --tertiary: #d7cfc2;
+    --border: #ded6ca;
+    --code-bg: #ece6dc;
+    --accent: #9d4939;
+    --reading-font: Georgia, "Times New Roman", "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", "STSong", "SimSun", serif;
+}
+
+:root[data-theme="dark"] {
+    --theme: #211f1c;
+    --entry: #211f1c;
+    --primary: #e8e1d6;
+    --secondary: #aaa294;
+    --content: #d2cabc;
+    --tertiary: #474137;
+    --border: #494237;
+    --code-bg: #332f29;
+    --code-block-bg: #2d2b28;
+    --accent: #dfa18c;
+}
+
+body {
+    font-family: var(--reading-font);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.list {
+    background: var(--theme);
+}
+
+.header-nav {
+    align-items: center;
+    min-height: var(--header-height);
+    line-height: 1.6;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.logo a {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.theme-toggle {
+    color: var(--secondary);
+}
+
+.menu {
+    gap: 22px;
+}
+
+.menu a {
+    padding: 4px 0;
+    color: var(--secondary);
+    font-size: 15px;
+}
+
+.menu .active {
+    color: var(--primary);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 7px;
+}
+
+.main {
+    padding-top: 20px;
+}
+
+.post-header,
+.page-header {
+    margin: 0 0 34px;
+}
+
+.post-title,
+.page-header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.post-meta {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.post-description {
+    color: var(--secondary);
+    font-size: 16px;
+}
+
+.post-content {
+    margin: 36px 0 44px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    font-weight: 600;
+    line-height: 1.4;
+    scroll-margin-top: 28px;
+}
+
+.post-content h1 {
+    font-size: 32px;
+    margin: 48px 0 24px;
+}
+
+.post-content h2 {
+    font-size: 28px;
+    margin: 44px 0 22px;
+}
+
+.post-content h3 {
+    font-size: 22px;
+    margin: 30px 0 18px;
+}
+
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    font-size: 18px;
+    margin: 26px 0 14px;
+}
+
+.post-content > :first-child {
+    margin-top: 0;
+}
+
+.post-content a:not(.anchor),
+.home-info .entry-content a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--tertiary);
+    text-underline-offset: 4px;
+}
+
+.post-content a:hover,
+.home-info .entry-content a:hover,
+.menu a:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+}
+
+.post-content blockquote {
+    margin: 28px 0;
+    padding: 2px 0 2px 20px;
+    border-inline-start: 2px solid var(--tertiary);
+    color: var(--secondary);
+}
+
+.post-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.post-content ul,
+.post-content ol {
+    padding-inline-start: 1.5em;
+}
+
+.post-content li {
+    margin-top: 0.45em;
+}
+
+.post-content li > .highlight,
+.post-content li > pre {
+    margin-inline-start: 0;
+}
+
+.post-content table:not(.lntable) {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.post-content hr {
+    margin: 38px 0;
+    height: 1px;
+    background: var(--border);
+}
+
+.post-content figure > figcaption {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--secondary);
+    text-align: center;
+}
+
+.post-content .footnotes {
+    margin-top: 44px;
+    font-size: 15px;
+}
+
+.post-content .footnote-ref,
+.post-content .footnote-backref {
+    color: var(--accent);
+}
+
+/* A quiet list of articles replaces the theme's floating cards. */
+.home-info.first-entry {
+    min-height: 0;
+    margin: 12px 0 44px;
+}
+
+.home-info .entry-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.home-info .entry-content {
+    color: var(--content);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.social-icons a {
+    padding: 8px 12px;
+    color: var(--secondary);
+}
+
+.social-icons a svg {
+    width: 21px;
+    height: 21px;
+}
+
+.post-entry {
+    padding: 26px 0;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
+    transition: none;
+}
+
+.post-entry:hover,
+.post-entry:focus-within {
+    transform: none;
+}
+
+.entry-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.post-entry .entry-content {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.entry-footer {
+    font-size: 14px;
+}
+
+.post-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.post-tags a {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+}
+
+.post-tags a::before {
+    content: "#";
+}
+
+.paginav {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    gap: 24px;
+}
+
+.paginav a {
+    padding: 14px 0;
+    font-size: 16px;
+}
+
+.footer {
+    max-width: calc(var(--main-width) + var(--gap) * 2);
+    margin: 24px auto 0;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* The desktop TOC is outside the reading column and needs no script. */
+.reading-toc {
+    display: none;
+}
+
+details.reading-toc-mobile {
+    margin: 0 0 30px;
+    border-color: var(--border);
+    border-radius: 3px;
+    background: transparent;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+[data-theme="dark"] details.reading-toc-mobile {
+    background: transparent;
+}
+
+.reading-toc-mobile .inner {
+    margin: 0 20px;
+    padding-bottom: 14px;
+}
+
+.reading-toc-mobile ul {
+    list-style: none;
+}
+
+.reading-toc-mobile li ul {
+    margin-inline-start: 16px;
+}
+
+.reading-toc-mobile a:hover {
+    color: var(--accent);
+}
+
+@media (min-width: 1280px) {
+    .reading-toc {
+        display: block;
+        position: fixed;
+        top: 120px;
+        left: calc(50% + var(--main-width) / 2 + 56px);
+        width: 192px;
+        max-height: calc(100vh - 160px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--secondary);
+    }
+
+    .reading-toc-title {
+        margin-bottom: 14px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+    }
+
+    .reading-toc ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .reading-toc li ul {
+        padding-inline-start: 14px;
+    }
+
+    .reading-toc a {
+        display: block;
+        padding: 4px 0 4px 12px;
+        border-inline-start: 1px solid var(--border);
+        color: var(--secondary);
+        overflow-wrap: anywhere;
+    }
+
+    .reading-toc a:hover,
+    .reading-toc a:focus-visible {
+        color: var(--accent);
+        border-color: var(--accent);
+        text-decoration: none;
+    }
+
+    details.reading-toc-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --gap: 20px;
+        --header-height: 112px;
+    }
+
+    body {
+        font-size: 17px;
+    }
+
+    .header-nav {
+        gap: 12px;
+        padding-top: 22px;
+        padding-bottom: 18px;
+    }
+
+    .logo,
+    .menu {
+        width: 100%;
+    }
+
+    .menu {
+        gap: 22px;
+    }
+
+    .main {
+        padding-top: 20px;
+    }
+
+    .post-title,
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .post-content h2 {
+        font-size: 25px;
+        margin-top: 36px;
+    }
+
+    .post-content h3 {
+        font-size: 21px;
+    }
+
+    .post-meta {
+        font-size: 14px;
+    }
+
+    .home-info .entry-header h1 {
+        font-size: 28px;
+    }
+
+    .paginav {
+        gap: 18px;
+    }
+}
+
+@media print {
+    .header,
+    .footer,
+    .reading-toc,
+    details.reading-toc-mobile,
+    .top-link,
+    .copy-code,
+    .paginav {
+        display: none !important;
+    }
+
+    :root,
+    :root[data-theme="dark"] {
+        --theme: white;
+        --primary: black;
+        --content: black;
+        --secondary: #555;
+    }
+
+    .main {
+        max-width: none;
+        min-height: 0;
+        padding: 0;
+    }
+}

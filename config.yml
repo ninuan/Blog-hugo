@@ -50,10 +50,13 @@ params:
 
   # 列表页 / 文章页开关
   ShowReadingTime: true
-  ShowShareButtons: true
-  ShowBreadCrumbs: true
+  ShowShareButtons: false
+  ShowBreadCrumbs: false
   ShowWordCount: true
   ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+  hideAuthor: true
+  DateFormat: "2006 年 1 月 2 日"
   ShowRssButtonInSectionTermList: true
   showtoc: true
   tocopen: false

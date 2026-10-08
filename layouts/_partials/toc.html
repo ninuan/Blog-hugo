@@ -1,0 +1,13 @@
+{{- $toc := .TableOfContents -}}
+{{- if strings.Contains $toc "<li>" -}}
+<aside class="reading-toc" aria-label="文章目录">
+    <div class="reading-toc-title">目录</div>
+    {{- $toc | replaceRE `id="TableOfContents"` `id="desktop-toc"` | safeHTML -}}
+</aside>
+<details class="toc reading-toc-mobile" {{ if (.Param "TocOpen") }}open{{ end }}>
+    <summary accesskey="c" title="(Alt + C)"><span class="title">目录</span></summary>
+    <div class="inner">
+        {{- $toc | replaceRE `id="TableOfContents"` `id="mobile-toc"` | safeHTML -}}
+    </div>
+</details>
+{{- end -}}

@@ -78,6 +78,21 @@ bash publish.sh "发布文章：我的新博客"
 覆盖了主题中的旧语言接口，避免 Hugo 0.158 以后出现弃用警告。
 升级 PaperMod 时，可以对照这三个覆盖模板同步主题的新改动。
 
+## 阅读风格
+
+阅读样式参考 [Dejavu 的文章页](https://blog.dejavu.moe/posts/how-i-built-my-personal-blog/)，
+使用暖色背景、系统衬线字体、720px 正文宽度和 1.8 倍行距，同时支持深色模式。
+字体使用系统中的宋体类字体，具体字形会随设备变化，无需下载远程字体。
+
+- `assets/css/extended/reading.css`：正文、标题、首页列表、目录和手机样式。
+- `layouts/_partials/toc.html`：宽屏右侧目录；不足 1280px 时改为正文前的折叠目录。
+- `i18n/zh-cn.yaml`：中文阅读时间、字数、复制按钮等文案。
+
+文章默认显示日期、阅读时间和字数，隐藏作者重复署名、面包屑和分享按钮。
+需要展开手机目录时，在文章 Front Matter 中设置 `TocOpen: true`；
+不需要目录时设置 `ShowToc: false`。
+阅读样式的测试内容位于 `content/posts/math-code-test/index.md`，保持为草稿。
+
 ## 个人信息
 
 首页使用 PaperMod 的 `homeInfoParams` 显示简短介绍，下方继续显示文章列表。

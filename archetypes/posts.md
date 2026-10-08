@@ -7,6 +7,6 @@ categories: []
 tags: []
 comments: true
 ShowToc: true
-TocOpen: true
+TocOpen: false
 draft: true
 ---
