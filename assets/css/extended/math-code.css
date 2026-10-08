@@ -1,0 +1,69 @@
+/* Long formulas scroll inside the article instead of widening the page. */
+.post-content .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+    margin: 1.5rem 0;
+}
+
+.post-content .katex {
+    font-size: 1.1em;
+}
+
+.post-content code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.post-content .highlight {
+    border: 1px solid var(--border);
+}
+
+/* Reserve room above the code for PaperMod's copy button. */
+.post-content .highlight > div,
+.post-content .highlight > pre,
+.post-content > pre {
+    padding-top: 2.25rem;
+}
+
+.post-content pre code {
+    font-size: 0.85em;
+    line-height: 1.65;
+    word-break: normal;
+}
+
+/* Code and line numbers share one scroll area, keeping rows aligned. */
+.post-content .highlight > div {
+    overflow-x: auto;
+    border-radius: var(--radius);
+}
+
+.post-content .highlight table {
+    display: table;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.post-content .highlight table pre code {
+    overflow-x: visible;
+}
+
+.post-content .highlight .lntd:first-child {
+    min-width: 0;
+    width: 1%;
+    user-select: none;
+}
+
+.post-content .copy-code {
+    display: block;
+    top: 6px;
+    right: 8px;
+    padding: 2px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.post-content .copy-code:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+}

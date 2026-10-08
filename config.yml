@@ -33,6 +33,7 @@ params:
   ShowShareButtons: true
   ShowBreadCrumbs: true
   ShowWordCount: true
+  ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: true
   showtoc: true
   tocopen: false
@@ -47,9 +48,6 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
-
-  # 代码高亮
-  # 参考 https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs
 
 menu:
   main:
@@ -69,3 +67,23 @@ menu:
       name: 搜索
       url: /search/
       weight: 40
+
+# 代码由 Hugo 的 Chroma 在构建时高亮，使用 PaperMod 自带的配色。
+markup:
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: false
+    lineNos: true
+    lineNumbersInTable: true
+    tabWidth: 4
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ['\[', '\]']
+            - ['$$', '$$']
+          inline:
+            - ['\(', '\)']
