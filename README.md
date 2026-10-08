@@ -36,6 +36,31 @@ hugo server -D
 
 自定义域名可以在 Pages 项目里直接添加，域名托管在 Cloudflare 的话 DNS 会自动配好。
 
+## 一键提交与发布
+
+写完文章后，先将文章 Front Matter 的 `draft` 改为 `false`，保存文件。
+macOS 可以在 Finder 中双击根目录的 `publish.command`，自动检查构建、添加改动、提交并推送到 GitHub。
+也可以在博客目录的终端运行：
+
+```bash
+bash publish.sh
+```
+
+默认提交说明是「更新博客：日期 时间」。想自定义说明时：
+
+```bash
+bash publish.sh "发布文章：我的新博客"
+```
+
+脚本会提交整个仓库的新增、修改和删除，包括文章图片、配置、样式和脚本；
+`public/`、`resources/` 等被 `.gitignore` 忽略的生成文件不会提交。
+构建检查在临时目录进行，不会发布草稿，也不会自动把草稿改为正式文章。
+
+脚本使用当前 Git 的 GitHub 登录配置，推送当前分支到 `origin`。
+本项目在 `main` 分支推送后，Cloudflare Pages 会按现有配置自动部署。
+无新改动时不会创建空提交，但会继续推送上次尚未推送成功的提交。
+构建失败时不会添加文件或创建提交；推送失败时会保留本地提交，处理报错后重新运行即可。
+
 ## 目录结构
 
 ```
@@ -47,6 +72,19 @@ hugo server -D
 
 想小改样式但不动主题源码：把主题里对应的文件复制到站点根目录同名路径覆盖，
 比如自定义 head 加 CSS 就新建 `layouts/partials/extend_head.html`。
+
+## 个人信息
+
+首页使用 PaperMod 的 `homeInfoParams` 显示简短介绍，下方继续显示文章列表。
+个人信息的编辑位置：
+
+- `config.yml` 中的 `params.author`：文章署名和网页作者信息。
+- `params.description`：站点简介；`params.homeInfoParams`：首页标题和介绍，支持 Markdown。
+- `params.socialIcons`：首页邮箱、GitHub、RSS 等链接；只添加希望公开的信息。邮箱使用 `mailto:` 链接。
+- `content/about/index.md`：「关于」页面的完整介绍。
+
+「关于」页面会出现在顶部导航中，不作为文章出现在首页列表、文章归档或 RSS 中。
+新文章默认沿用全站作者；需要单独署名时，在文章 Front Matter 中添加 `author`。
 
 ## 公式与代码块
 

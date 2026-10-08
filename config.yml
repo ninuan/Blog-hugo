@@ -1,5 +1,5 @@
-baseURL: "https://blog.xxhx.de"   # 改成你的域名，Cloudflare Pages 会给你一个 *.pages.dev 的免费域名
-title: "Ninuan's Blog"                 # 改成你的博客名
+baseURL: "https://blog.xxhx.de"
+title: "Ninuan's Blog"
 paginate: 5
 theme: "PaperMod"
 
@@ -25,8 +25,28 @@ outputs:
 
 params:
   env: production
-  description: "我的个人博客"
-  author: "me"
+  description: "Ninuan 的个人博客：把学到的东西写下来，把生活里的片刻留下来。"
+  author: "Ninuan"
+  mainSections: ["posts"]
+
+  # 首页保留文章列表，在顶部显示简短的个人介绍。
+  homeInfoParams:
+    Title: "你好，我是 Ninuan"
+    Content: |
+      把学到的东西写下来，把生活里的片刻留下来。
+
+      [关于我](/about/) · [文章归档](/archives/)
+
+  socialIcons:
+    - name: email
+      title: "邮箱 · vyren0821@gmail.com"
+      url: "mailto:vyren0821@gmail.com"
+    - name: github
+      title: "GitHub · Ninuan"
+      url: "https://github.com/ninuan"
+    - name: rss
+      title: "RSS 订阅"
+      url: "/index.xml"
 
   # 列表页 / 文章页开关
   ShowReadingTime: true
@@ -67,6 +87,10 @@ menu:
       name: 搜索
       url: /search/
       weight: 40
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 50
 
 # 代码由 Hugo 的 Chroma 在构建时高亮，使用 PaperMod 自带的配色。
 markup:
