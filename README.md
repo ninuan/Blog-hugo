@@ -73,6 +73,11 @@ bash publish.sh "发布文章：我的新博客"
 想小改样式但不动主题源码：把主题里对应的文件复制到站点根目录同名路径覆盖，
 比如自定义 head 加 CSS 就新建 `layouts/partials/extend_head.html`。
 
+本项目使用 Hugo `0.167.0`，语言配置使用 `locale: zh-CN`。
+`layouts/baseof.html`、`layouts/rss.xml` 和 `layouts/_partials/templates/opengraph.html`
+覆盖了主题中的旧语言接口，避免 Hugo 0.158 以后出现弃用警告。
+升级 PaperMod 时，可以对照这三个覆盖模板同步主题的新改动。
+
 ## 个人信息
 
 首页使用 PaperMod 的 `homeInfoParams` 显示简短介绍，下方继续显示文章列表。

@@ -3,7 +3,7 @@ title: "Ninuan's Blog"
 paginate: 5
 theme: "PaperMod"
 
-languageCode: "zh-cn"
+locale: "zh-CN"
 DefaultContentLanguage: "zh-cn"
 hasCJKLanguage: true
 enableRobotsTXT: true
